@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webko Browser</title>
+  <!-- Courier Prime from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Courier Prime', Courier, monospace;
+      background: #FFC5D3;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      margin-top: 5%;
+      background: #fff;
+      padding: 40px 30px 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      display: inline-block;
+    }
+    .webko-logo-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 14px;
+      gap: 14px;
+      font-family: 'Courier Prime', Courier, monospace;
+      user-select: none;
+    }
+    .webko-hearts {
+      font-size: 36px;
+      color: #FF3B70;
+      letter-spacing: 2px;
+      line-height: 1;
+      font-weight: bold;
+      margin-right: 4px;
+      margin-left: 4px;
+    }
+    .webko-logo {
+      font-size: 40px;
+      font-family: 'Courier Prime', Courier, monospace;
+      letter-spacing: 2px;
+      font-weight: bold;
+      color: #000;
+      line-height: 1;
+    }
+    .webko-logo span { color: #000 !important; }
+    .quick-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 26px;
+    }
+    .quick-link-btn {
+      background: #FFC5D3;
+      color: #000;
+      border: none;
+      border-radius: 16px;
+      font-size: 15px;
+      font-family: 'Courier Prime', Courier, monospace;
+      padding: 7px 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 1.2px 5px rgba(255, 60, 112, 0.09);
+      transition: background 0.18s, color 0.18s, box-shadow 0.2s;
+      outline: none;
+      line-height: 1.1;
+    }
+    .quick-link-btn span {
+      font-size: 1em;
+      vertical-align: middle;
+    }
+    .quick-link-btn:hover {
+      background: #ff90ba;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(255, 60, 112, 0.16);
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 25px;
+      margin-top: 10px;
+    }
+    .tab {
+      padding: 12px 32px;
+      margin: 0 8px;
+      border: none;
+      border-radius: 16px 16px 0 0;
+      background: #FFC5D3;
+      color: #000;
+      font-size: 19px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: 'Courier Prime', Courier, monospace;
+      outline: none;
+      transition: background .2s, border-bottom .2s;
+      border-bottom: 3px solid transparent;
+      position: relative;
+    }
+    .tab.active {
+      border-bottom: 3px solid #fff;
+      background: #FFC5D3;
+      color: #000;
+      z-index: 1;
+    }
+    .tab:hover:not(.active) {
+      background: #e89ab2;
+    }
+    .tab-content {
+      display: none;
+      padding: 25px 0 0 0;
+      min-width: 440px;
+      min-height: 200px;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    input[type="text"] {
+      width: 400px;
+      padding: 12px 18px;
+      font-size: 18px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      margin-right: 10px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border 0.2s;
+      font-family: 'Courier Prime', Courier, monospace;
+    }
+    input[type="text"]:focus {
+      border: 1.5px solid #4285f4;
+    }
+    button, .vpn-country {
+      font-family: 'Courier Prime', Courier, monospace;
+    }
+    button {
+      background: #FFC5D3;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #e89ab2;
+    }
+    .results {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Courier Prime', Courier, monospace;
+    }
+    .vpn-select-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin: 20px 0 15px 0;
+    }
+    .vpn-country {
+      background: #FFC5D3;
+      color: #fff;
+      border: none;
+      padding: 14px 22px;
+      border-radius: 16px;
+      font-size: 19px;
+      cursor: pointer;
+      margin-bottom: 5px;
+      transition: background 0.2s, color 0.2s;
+      outline: none;
+      font-weight: bold;
+    }
+    .vpn-country.selected,
+    .vpn-country:hover {
+      background: #ff7ca9;
+      color: #fff;
+    }
+    .vpn-status {
+      font-size: 20px;
+      margin: 18px 0 5px 0;
+      color: #333;
+      font-family: 'Courier Prime', Courier, monospace;
+    }
+    .vpn-disclaimer {
+      max-width: 400px;
+      font-size: 15px;
+      color: #cf0076;
+      margin: 0 auto 12px auto;
+      font-family: 'Courier Prime', Courier, monospace;
+    }
+    @media (max-width: 600px) {
+      .container { min-width: unset; padding-left: 6px; padding-right: 6px; }
+      .tab-content { min-width: unset; }
+      input[type="text"] { width: 90vw; }
+      .quick-links { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="webko-logo-row">
+      <span class="webko-hearts">♥ ♥</span>
+      <div class="webko-logo">
+        <span>W</span><span>e</span><span>b</span><span>k</span><span>o</span>
+      </div>
+      <span class="webko-hearts">♥ ♥</span>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div class="quick-links">
+      <button class="quick-link-btn" onclick="window.location.href='https://www.youtube.com';" title="Open YouTube">
+        <span>▶</span> Youtube
+      </button>
+      <button class="quick-link-btn" onclick="window.location.href='https://discord.com';" title="Open Discord">
+        <span>💬</span> Discord
+      </button>
+      <button class="quick-link-btn" onclick="window.location.href='https://www.google.com';" title="Open Google">
+        <span>🔍</span> Google
+      </button>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" id="searchTabBtn" onclick="switchTab('search')">Search</button>
+      <button class="tab" id="vpnTabBtn" onclick="switchTab('vpn')">VPN</button>
+    </div>
+    <!-- Search Tab -->
+    <div class="tab-content active" id="tab-search">
+      <form id="mockSearchForm" autocomplete="off">
+        <input type="text" id="searchInput" name="q" placeholder="Search with Webko..." required>
+        <button type="submit">Search</button>
+      </form>
+      <div class="results" id="results"></div>
+    </div>
+    <!-- VPN Tab -->
+    <div class="tab-content" id="tab-vpn">
+      <div class="vpn-disclaimer">
+        <b>Note:</b> This is a <strong>simulation only</strong> for educational/demo purposes.<br>If you want to truly protect your privacy and change your location, use a real VPN service.
+      </div>
+      <div>
+        <div style="font-size:23px;margin-bottom:3px;font-weight:bold">Select your VPN location</div>
+        <div class="vpn-select-list" id="countryList">
+          <!-- Buttons injected by JS -->
+        </div>
+        <div class="vpn-status" id="vpnStatus">
+          <em>No VPN connection selected.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tabs logic
+    function switchTab(tab) {
+      document.getElementById('searchTabBtn').classList.toggle('active', tab === 'search');
+      document.getElementById('vpnTabBtn').classList.toggle('active', tab === 'vpn');
+      document.getElementById('tab-search').classList.toggle('active', tab === 'search');
+      document.getElementById('tab-vpn').classList.toggle('active', tab === 'vpn');
+    }
+    // Search form logic (mock)
+    document.getElementById('mockSearchForm').onsubmit = function(e) {
+      e.preventDefault();
+      const query = document.getElementById('searchInput').value.trim();
+      if(query.length === 0) return;
+      const url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+      window.open(url, '_self'); // open in same tab!
+      // If you want to show internal results, use a custom API here instead.
+    }
+
+    // VPN countries (mock)
+    const vpnCountries = [
+      'United States 🇺🇸',
+      'Canada 🇨🇦',
+      'United Kingdom 🇬🇧',
+      'Germany 🇩🇪',
+      'Netherlands 🇳🇱',
+      'Japan 🇯🇵',
+      'Australia 🇦🇺',
+      'Brazil 🇧🇷',
+      'India 🇮🇳',
+      'Singapore 🇸🇬'
+    ];
+    let currentCountry = null;
+
+    function selectVPN(country, index) {
+      currentCountry = index;
+      // Update visual
+      document.querySelectorAll('.vpn-country').forEach((btn,i)=>{
+        btn.classList.toggle('selected', i===index);
+      });
+      document.getElementById('vpnStatus').innerHTML = 
+        `<span style="color:#cf0076;font-weight:bold;">&#10004; Connected!</span> Your connection is now routed through <b>${country}</b> (simulation only).`;
+    }
+    // Render VPN buttons
+    window.addEventListener('DOMContentLoaded', ()=>{
+      const list = document.getElementById('countryList');
+      vpnCountries.forEach((country, i)=>{
+        const btn = document.createElement('button');
+        btn.className = "vpn-country";
+        btn.type = "button";
+        btn.textContent = country;
+        btn.onclick = ()=>selectVPN(country,i);
+        list.appendChild(btn);
+      });
+    });
+  </script>
+</body>
+</html>
