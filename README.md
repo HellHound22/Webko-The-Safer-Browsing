@@ -29,10 +29,13 @@ Webko. Senko's Browser within a Browser. Aka HTML :3 This works very well and I 
    No, I did not make the Virtual Machine. I am using part of Oracle VM's Code. Some of it is mine though. 
 
 
+<img width="1360" height="604" alt="Screenshot 2025-12-05 8 38 16 PM" src="https://github.com/user-attachments/assets/ba89dd19-fca3-44e5-b4a8-a8e24ac25365" />
+
+
+
 
    Rules and Copyright Issues
-   - Because my browser is 25%<img width="1360" height="604" alt="Screenshot 2025-12-05 8 38 16 PM" src="https://github.com/user-attachments/assets/cb4c21f6-6a71-4263-bf82-9b467c408599" />
- AI based. I do not mind if you use and edit it to your hearts content.
+   - Because my browser is 25% AI based. I do not mind if you use and edit it to your hearts content.
    - You may not claim that it is your original idea or script.
    - Anything you do on this browser does not reflect on me as the creator.
    - The safer browsing does not promote illegal/gang activites to hide the users identity.
